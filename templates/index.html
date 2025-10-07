@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediksi Nilai Ujian</title>
+    <style>
+        body {font-family: Arial; text-align: center; margin-top: 50px;}
+        input {padding: 8px; width: 200px;}
+        button {padding: 8px 16px; margin-top: 10px;}
+        .hasil {margin-top: 20px; font-size: 18px;}
+        img {margin-top: 20px; border: 1px solid #ccc; width: 500px;}
+    </style>
+</head>
+<body>
+    <h2>Aplikasi Prediksi Nilai Ujian Berdasarkan Jam Belajar</h2>
+    <form method="POST" action="/predict">
+        <label>Masukkan Jam Belajar:</label><br>
+        <input type="text" name="jam_belajar" placeholder="contoh: 5"><br>
+        <button type="submit">Prediksi</button>
+    </form>
+
+    {% if prediksi %}
+        <div class="hasil">
+            <p>Jam Belajar: {{ jam }}</p>
+            <p>Prediksi Nilai Ujian: <b>{{ prediksi }}</b></p>
+        </div>
+    {% elif error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    {% if grafik_url %}
+        <img src="{{ grafik_url }}" alt="Grafik Regresi">
+    {% endif %}
+</body>
+</html>
